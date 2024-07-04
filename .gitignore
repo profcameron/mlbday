@@ -1,5 +1,6 @@
 ### Ignoring IntelliJ IDEA files/folders ###
 .idea/
+.idea
 *.iws
 *.iml
 *.ipr
