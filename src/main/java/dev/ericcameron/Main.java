@@ -1,6 +1,8 @@
 package dev.ericcameron;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.http.HttpHeaders;
@@ -32,17 +34,25 @@ public class Main {
         // PlayerModel is a record containing the important information from the player data API
         PlayerModel[] result = restTemplate.getForObject(url, PlayerModel[].class);
 
+        Arrays.sort(result);
+
+        for (int i = 0; i < result.length; i++) {
+            System.out.println(result[i].sortDate);
+        }
+
         List<PlayerModel> active = new ArrayList<>();
         int playerCount = 0;
         for (int i = 0; i < result.length; i++) {
             PlayerModel current = result[i];
-            if(!current.status().equals("Non-Roster Invitee") && !current.status().equals("Minors")){
-                System.out.println(current);
+            if(!current.getStatus().equals("Non-Roster Invitee") && !current.getStatus().equals("Minors")){
                 active.add(current);
-                playerCount++;
             }
         }
-        System.out.println("Total on team: " + playerCount);
+        System.out.println("Total players on team roster: " + active.size());
+
+        for (int i = 0; i < active.size(); i++) {
+            System.out.println(active.get(i));
+        }
 
     }
 }
