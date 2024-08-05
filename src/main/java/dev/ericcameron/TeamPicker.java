@@ -2,14 +2,24 @@ package dev.ericcameron;
 
 import java.util.Scanner;
 
+/**
+ * Utility class for selecting an MLB team from a list.
+ */
 public class TeamPicker {
 
+    /**
+     * Prompts the user to choose an MLB team and returns the team's abbreviation.
+     *
+     * @return The selected team's abbreviation (e.g., "NYM" for New York Mets)
+     */
     public String chooseTeam(){
         Scanner input = new Scanner(System.in);
         String choiceString;
 
+        // Array of MLB team abbreviations
         String[] teamList = {"ARI", "ATL", "BAL", "BOS", "CHC", "CHW", "CIN", "CLE", "COL", "DET", "HOU", "KC", "LAA", "LAD", "MIA", "MIL", "MIN", "NYM", "NYY", "OAK", "PHI", "PIT", "SD", "SF", "SEA", "STL", "TB", "TEX", "TOR", "WSH"};
 
+        // Display the list of MLB teams
         System.out.println("1. Arizona Diamondbacks");
         System.out.println("2. Atlanta Braves");
         System.out.println("3. Baltimore Orioles");
@@ -44,7 +54,8 @@ public class TeamPicker {
         int choice = 0;
         boolean inputOk = false;
 
-        while(inputOk == false) {
+        // Loop until valid input is received
+        while(!inputOk) {
             System.out.print("Please pick a team number 1-30 >> ");
             choiceString = input.nextLine();
             if (isNumeric(choiceString)) {
@@ -62,6 +73,12 @@ public class TeamPicker {
         return teamList[choice-1];
     }
 
+    /**
+     * Checks if a given string can be parsed as an integer.
+     *
+     * @param str The string to check
+     * @return true if the string is numeric, false otherwise
+     */
     public static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
