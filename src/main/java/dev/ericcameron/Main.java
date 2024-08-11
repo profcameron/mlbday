@@ -34,11 +34,6 @@ public class Main {
         // Sort players by birth date (oldest to youngest)
         Arrays.sort(result);
 
-        // Display sorted dates for debugging
-        for (int i = 0; i < result.length; i++) {
-            System.out.println(result[i].sortDate);
-        }
-
         // Filter active players (exclude non-roster invitees and minor league players)
         List<PlayerModel> active = new ArrayList<>();
         int playerCount = 0;
@@ -52,10 +47,13 @@ public class Main {
         // Display total count of active players
         System.out.println("Total players on team roster: " + active.size());
 
-        // Print details of all active players
-        for (int i = 0; i < active.size(); i++) {
-            System.out.println(active.get(i));
-        }
+//        // Print details of all active players
+//        for (int i = 0; i < active.size(); i++) {
+//            System.out.println(active.get(i));
+//        }
+
+        CalendarProcessor calendarProcessor = new CalendarProcessor();
+        calendarProcessor.createICSFile(active, team);
 
     }
 }

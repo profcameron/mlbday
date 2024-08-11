@@ -3,6 +3,7 @@ package dev.ericcameron;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 import static java.util.Objects.isNull;
 
@@ -66,6 +67,14 @@ public class PlayerModel implements Comparable<PlayerModel> {
      */
     public String getStatus() {
         return status;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
     /**
